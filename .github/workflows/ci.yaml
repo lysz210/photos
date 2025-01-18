@@ -18,9 +18,9 @@ jobs:
       # todo build steps
       # deploy
       - name: Pulumi dependencies
-        working-directory: ./pulumi
+        working-directory: pulumi
         run: npm ci
-      - uses: pulumi/actions@v4
+      - uses: pulumi/actions@v6
         with:
           command: up
           stack-name: lysz210/photos/dev
