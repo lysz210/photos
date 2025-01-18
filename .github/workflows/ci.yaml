@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - LYS-4-integrazione_pulumi
 
 jobs:
   cd:
