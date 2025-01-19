@@ -7,8 +7,7 @@
   "scripts": {
     "test": "npm run test:bdd",
     "test:unit": "vitest run",
-    "test:bdd": "cucumber-js",
-    "coverage": "vitest run --coverage"
+    "test:bdd": "cucumber-js"
   },
   "keywords": [],
   "author": "",
