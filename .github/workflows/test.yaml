@@ -3,7 +3,7 @@ name: photo-testing
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 jobs:
