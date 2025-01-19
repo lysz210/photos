@@ -7,11 +7,6 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
-        node: [ 22 ]
     uses: ./.github/workflows/test.yaml
   deploy:
     needs: [test]
