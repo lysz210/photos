@@ -6,16 +6,23 @@ on:
       - master
 
 jobs:
-  cd:
+  test:
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        node: [22]
+        os: [ ubuntu-latest ]
+        node: [ 22 ]
+    steps:
+      - uses: ./.github/workflows/test.yaml
+  deploy:
+    needs: [test]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 22 ]
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/workflows/test.yaml
       # todo build steps
       # deploy
       - name: Pulumi dependencies
