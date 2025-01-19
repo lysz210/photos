@@ -6,6 +6,8 @@ on:
       - photo-testing
     types:
       - completed
+    branches:
+      - master
 
 jobs:
   cd:
