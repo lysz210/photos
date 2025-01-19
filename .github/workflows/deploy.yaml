@@ -3,7 +3,7 @@ name: Deploy photos
 on:
   push:
     branches:
-      - master
+      - nonesistent
 
 jobs:
   cd:
