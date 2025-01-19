@@ -6,13 +6,11 @@ on:
       - photo-testing
     types:
       - completed
-    branches-ignore:
-      - master
 
 jobs:
   cd:
     runs-on: ${{ matrix.os }}
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/master' }}
 
     strategy:
       matrix:
