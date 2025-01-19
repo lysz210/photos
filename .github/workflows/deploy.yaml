@@ -14,8 +14,8 @@ jobs:
         os: [ubuntu-latest]
         node: [22]
     steps:
-      - uses: ./.github/workflows/test.yaml
       - uses: actions/checkout@v4
+      - uses: ./.github/workflows/test.yaml
       # todo build steps
       # deploy
       - name: Pulumi dependencies
