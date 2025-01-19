@@ -12,9 +12,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest ]
         node: [ 22 ]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/test.yaml
+    uses: ./.github/workflows/test.yaml
   deploy:
     needs: [test]
     runs-on: ${{ matrix.os }}
