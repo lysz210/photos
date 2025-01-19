@@ -1,18 +1,13 @@
-name: photos
+name: Deploy photos
 
 on:
-  workflow_run:
-    workflows:
-      - photo-testing
-    types:
-      - completed
+  push:
+    branches:
+      - master
 
 jobs:
   cd:
     runs-on: ${{ matrix.os }}
-    if: |
-      github.event.workflow_run.conclusion == 'success' &&
-      github.ref_name == 'master'
 
     strategy:
       matrix:
