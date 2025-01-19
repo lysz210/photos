@@ -6,7 +6,7 @@ on:
       - photo-testing
     types:
       - completed
-    branches:
+    branches-ignore:
       - master
 
 jobs:
