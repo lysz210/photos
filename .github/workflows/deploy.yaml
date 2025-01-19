@@ -14,7 +14,7 @@ jobs:
         os: [ubuntu-latest]
         node: [22]
     steps:
-      - use: ./.github/workflows/test.yaml
+      - uses: ./.github/workflows/test.yaml
       - uses: actions/checkout@v4
       # todo build steps
       # deploy
