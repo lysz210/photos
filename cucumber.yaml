@@ -1,0 +1,12 @@
+default:
+  loader:
+    - ts-node/esm
+  import:
+    - ./features/step-definitions/**/*.ts
+  parallel: 2
+  format:
+    - "progress-bar"
+    - "html:.report/bdd/cucumber-report.html"
+  #  dryRun: true
+  strict: false
+  monochrome: false
