@@ -14,6 +14,12 @@ export default defineConfig({
         ],
         coverage: {
             enabled: true,
+            thresholds: {
+                lines: 80,
+                functions: 80,
+                branches: 80,
+                statements: 80
+            },
             exclude: [
                 '**/features/**',
                 '**/pulumi/**',
