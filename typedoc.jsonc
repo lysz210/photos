@@ -1,0 +1,16 @@
+{
+    "entryPointStrategy": "expand",
+    "exclude": "**/*+(.step|.test|.spec).ts",
+    "outputs": [{
+        "name": "html",
+        "path": ".reports/docs",
+        "options": {
+            "navigation": {
+                "includeCategories": true,
+                "includeGroups": true,
+                "excludeReferences": false,
+                "includeFolders": true
+            }
+        }
+    }]
+}
