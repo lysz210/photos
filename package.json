@@ -7,7 +7,7 @@
     "test": "npm run test:unit && npm run test:bdd",
     "test:unit": "vitest run",
     "test:bdd": "cucumber-js",
-    "docs": "typedoc"
+    "docs": "typedoc src"
   },
   "keywords": [],
   "author": "",
