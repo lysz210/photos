@@ -20,7 +20,7 @@ const ghPagesVerificationRecord = new Record("ghPagesVerificationRecord", {
 
 const ghPagesPointerRecord = new Record("ghPagesPointerRecord", {
     zoneId: lysz210Zone.then(zone => zone.zoneId),
-    type: RecordType.A,
+    type: RecordType.CNAME,
     name: 'photos.gh.lysz210.name',
     records: [
         'lysz210.github.io',
