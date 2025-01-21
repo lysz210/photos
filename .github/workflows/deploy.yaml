@@ -10,7 +10,7 @@ jobs:
   test:
     uses: ./.github/workflows/test.yaml
   deploy:
-    if: github.ref_name != master
+    if: github.ref_name != 'master'
     needs:
       - test
     runs-on: ${{ matrix.os }}
