@@ -3,14 +3,14 @@ name: Deploy photos
 on:
   push:
     branches:
-      - LYS-24-verifica-dominio-photos.gh.lysz210.name-per-gh-pages
+      - master
 
 jobs:
-#  tests:
-#    uses: ./.github/workflows/test.yaml
+  tests:
+    uses: ./.github/workflows/test.yaml
   deploy:
-#    needs:
-#      - tests
+    needs:
+      - tests
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -33,57 +33,57 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#  docs:
-#    needs:
-#      - tests
-#    runs-on: ${{ matrix.os }}
-#    strategy:
-#      matrix:
-#        os: [ ubuntu-latest ]
-#        node: [ 22 ]
-#    steps:
-#      - uses: actions/checkout@v4
-#      - name: Install dependencies
-#        run: npm ci
-#      - name: Generate documentations
-#        run: npm run docs
-#      - name: Upload documentation to artifact
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: docs
-#          path: .reports/docs
-#          if-no-files-found: error
-#  pages:
-#    needs:
-#      - tests
-#      - docs
-#    runs-on: ${{ matrix.os }}
-#    strategy:
-#      matrix:
-#        os: [ ubuntu-latest ]
-#        node: [ 22 ]
-#    steps:
-#      - name: Download docs
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: docs
-#      - name: Download bdd tests reports
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: bdd
-#          path: bdd
-#      - name: Download unit tests reports
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: unit
-#          path: unit
-#      - name: Download code coverage reports
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: coverage
-#          path: coverage
-#      - name: Deploy pages
-#        uses: peaceiris/actions-gh-pages@v4
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: ./
+  docs:
+    needs:
+      - tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 22 ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate documentations
+        run: npm run docs
+      - name: Upload documentation to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: .reports/docs
+          if-no-files-found: error
+  pages:
+    needs:
+      - tests
+      - docs
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 22 ]
+    steps:
+      - name: Download docs
+        uses: actions/download-artifact@v4
+        with:
+          name: docs
+      - name: Download bdd tests reports
+        uses: actions/download-artifact@v4
+        with:
+          name: bdd
+          path: bdd
+      - name: Download unit tests reports
+        uses: actions/download-artifact@v4
+        with:
+          name: unit
+          path: unit
+      - name: Download code coverage reports
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+      - name: Deploy pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
