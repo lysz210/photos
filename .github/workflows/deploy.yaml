@@ -3,37 +3,36 @@ name: Deploy photos
 on:
   push:
     branches:
-      - LYS-21-rilasciare-la-sottosezione-risultati-unittest-e-coverage
-#      - master
+      - master
 
 jobs:
   tests:
     uses: ./.github/workflows/test.yaml
-#  deploy:
-#    needs:
-#      - tests
-#    runs-on: ${{ matrix.os }}
-#    strategy:
-#      matrix:
-#        os: [ ubuntu-latest ]
-#        node: [ 22 ]
-#    steps:
-#      - uses: actions/checkout@v4
-#      # todo build steps
-#      # deploy
-#      - name: Pulumi dependencies
-#        working-directory: pulumi
-#        run: npm ci
-#      - uses: pulumi/actions@v6
-#        with:
-#          command: up
-#          stack-name: lysz210/photos/dev
-#          work-dir: pulumi
-#        env:
-#          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          AWS_REGION: ${{ secrets.AWS_REGION }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  deploy:
+    needs:
+      - tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 22 ]
+    steps:
+      - uses: actions/checkout@v4
+      # todo build steps
+      # deploy
+      - name: Pulumi dependencies
+        working-directory: pulumi
+        run: npm ci
+      - uses: pulumi/actions@v6
+        with:
+          command: up
+          stack-name: lysz210/photos/dev
+          work-dir: pulumi
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   docs:
     needs:
       - tests
@@ -52,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: docs
-          path: ${{ github.workspace }}/.reports/docs
+          path: .reports/docs
           if-no-files-found: error
   pages:
     needs:
