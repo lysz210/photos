@@ -1,0 +1,6 @@
+config:
+  aws:region: eu-south-1
+  photos:ghVerificationHostname:
+    secure: AAABAK4RBLkQScF98pRH/igUwsn9CEq+WEt6XgXEksJQ1GRx3k4pUwNn51Vk5evY4BY9hoW3kgd5rQjdi6rw1GrVMYbgFmVuS68s7T3BZC8Dbh4m0b0=
+  photos:ghVerificationValue:
+    secure: AAABAPrBerjeJAZroYO5rbn8YUTNsOy67pKggiYN2cxb3on9gCBg3ba19/ywaZAa/bz2T1TI4/rh02gPVnc=
