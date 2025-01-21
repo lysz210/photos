@@ -9,7 +9,8 @@ jobs:
   test:
     uses: ./.github/workflows/test.yaml
   deploy:
-    needs: [test]
+    needs:
+      - test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -32,3 +33,23 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  docs:
+    needs:
+      - test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 22 ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate documentations
+        run: npm run docs
+      - name: Upload documentation to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: ${{ github.workspace }}/.reports/docs
+          if-no-files-found: error
