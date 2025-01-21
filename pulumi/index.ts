@@ -15,7 +15,7 @@ const ghPagesVerificationRecord = new Record("ghPagesVerificationRecord", {
     type: RecordType.TXT,
     name: config.requireSecret<string>("ghVerificationHostname"),
     records: [config.requireSecret<string>("ghVerificationValue")],
-    ttl: 300
+    ttl: 172800
 });
 
 const ghPagesPointerRecord = new Record("ghPagesPointerRecord", {
@@ -25,7 +25,7 @@ const ghPagesPointerRecord = new Record("ghPagesPointerRecord", {
     records: [
         'lysz210.github.io',
     ],
-    ttl: 300
+    ttl: 172800
 })
 
 // Export the name of the bucket
