@@ -6,7 +6,7 @@ default:
   parallel: 2
   format:
     - "progress-bar"
-    - "html:.reports/bdd/cucumber-report.html"
+    - "html:.reports/bdd/index.html"
   #  dryRun: true
   strict: false
   monochrome: false

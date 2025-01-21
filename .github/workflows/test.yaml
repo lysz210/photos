@@ -20,3 +20,9 @@ jobs:
         run: npm run test:unit
       - name: Run Bdd
         run: npm run test:bdd
+      - name: Upload Bdd test results to artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bdd
+          path: ${{ github.workspace }}/.reports/bdd
+          if-no-files-found: error
