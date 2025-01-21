@@ -3,7 +3,7 @@ name: Deploy photos
 on:
   push:
     branches:
-      - LYS-6-Create-bucket-s3
+      - LYS-19-rilasciare-la-sottosezione-documentazione
 #      - master
 
 jobs:
