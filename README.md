@@ -7,3 +7,7 @@ master deploy status [![photos](https://github.com/lysz210/photos/actions/workfl
 # Test results
 
 [Bdd results](https://lysz210.github.io/photos/bdd)
+
+[Unit tests results](https://lysz210.github.io/photos/unit)
+
+[Code coverage](https://lysz210.github.io/photos/coverage)
