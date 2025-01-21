@@ -67,6 +67,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: docs
+          path: docs
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
         with:
