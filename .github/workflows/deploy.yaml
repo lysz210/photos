@@ -4,13 +4,11 @@ on:
   push:
     branches:
       - master
-      - LYS-17-aggiungere-github-actions
 
 jobs:
   test:
     uses: ./.github/workflows/test.yaml
   deploy:
-    if: github.ref_name != 'master'
     needs:
       - test
     runs-on: ${{ matrix.os }}
@@ -53,5 +51,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: docs
-          path: ${{ github.workspace }}/.reports
+          path: ${{ github.workspace }}/.reports/docs
           if-no-files-found: error
