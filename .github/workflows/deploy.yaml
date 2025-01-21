@@ -3,7 +3,7 @@ name: Deploy photos
 on:
   push:
     branches:
-      - LYS-20-rilasciare-la-sottosezione-risultati-bdd
+      - LYS-21-rilasciare-la-sottosezione-risultati-unittest-e-coverage
 #      - master
 
 jobs:
@@ -73,6 +73,16 @@ jobs:
         with:
           name: bdd
           path: bdd
+      - name: Download unit tests reports
+        uses: actions/download-artifact@v4
+        with:
+          name: unit
+          path: unit
+      - name: Download code coverage reports
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage
+          path: coverage
       - name: Deploy pages
         uses: peaceiris/actions-gh-pages@v4
         with:
