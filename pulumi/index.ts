@@ -23,19 +23,6 @@ const ghPagesPointerRecord = new Record("ghPagesPointerRecord", {
     type: RecordType.A,
     name: 'photos.gh.lysz210.name',
     records: [
-        '185.199.108.153',
-        '185.199.109.153',
-        '185.199.110.153',
-        '185.199.111.153',
-    ],
-    ttl: 300
-})
-
-const ghPagesCnameRecord = new Record("ghPagesCnameRecord", {
-    zoneId: lysz210Zone.then(zone => zone.zoneId),
-    type: RecordType.CNAME,
-    name: 'photos.gh.lysz210.name',
-    records: [
         'lysz210.github.io',
     ],
     ttl: 300
@@ -45,4 +32,3 @@ const ghPagesCnameRecord = new Record("ghPagesCnameRecord", {
 export const flickrRepoId = flickrRepo.id;
 export const ghPagesVerification = ghPagesVerificationRecord.name
 export const ghPagesPointer = ghPagesPointerRecord.name
-export const ghPagesCname = ghPagesCnameRecord.name
